@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phil P | Bold Flavors, Freshly Served</title>
+    <meta name="description" content="The best Jollof, Noodles, and Salads in the Volta region. Ready for pickup or delivery.">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        charcoal: '#1A1A1A',
+                        vibrant: '#FF5722',
+                        leaf: '#4CAF50',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Hide scrollbar for cleaner UI in the horizontal scroll sections */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans pb-16 md:pb-0">
+
+    <header class="bg-charcoal text-white sticky top-0 z-50 shadow-md">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold tracking-wider text-vibrant">PHIL <span class="text-white">P</span></a>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#menu" class="hover:text-vibrant transition">Menu</a>
+                <a href="#favorites" class="hover:text-vibrant transition">Favorites</a>
+                <a href="#find-us" class="hover:text-vibrant transition">Location</a>
+            </nav>
+            <button onclick="toggleCart()" class="relative text-white hover:text-vibrant transition">
+                <i class="fas fa-shopping-cart text-xl"></i>
+                <span id="desktop-cart-count" class="absolute -top-2 -right-2 bg-vibrant text-white text-xs font-bold w-5 h-5 flex items-center justify-center rounded-full">0</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="bg-charcoal relative overflow-hidden">
+            <div class="absolute inset-0 opacity-40">
+                <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Restaurant Background" class="w-full h-full object-cover">
+            </div>
+            <div class="max-w-4xl mx-auto px-4 py-24 relative z-10 text-center">
+                <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 leading-tight">Bold Flavors, <br><span class="text-vibrant">Freshly Served.</span></h1>
+                <p class="text-lg md:text-2xl text-gray-200 mb-10">The best Jollof, Noodles, and Salads in town. <br class="hidden md:block">Ready for pickup or delivery.</p>
+                <a href="#menu" class="inline-block bg-vibrant text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-orange-600 hover:scale-105 transition transform duration-200">
+                    View Full Menu
+                </a>
+            </div>
+        </section>
+
+        <section id="menu" class="py-16 px-4 max-w-6xl mx-auto">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-charcoal mb-4">Our Menu</h2>
+                <div class="w-24 h-1 bg-vibrant mx-auto rounded-full"></div>
+            </div>
+
+            <div class="flex overflow-x-auto no-scrollbar justify-start md:justify-center space-x-2 md:space-x-4 mb-8 pb-2">
+                <button onclick="openTab('rice')" class="tab-btn active bg-vibrant text-white px-6 py-2 rounded-full font-bold whitespace-nowrap shadow-sm transition" data-target="rice">Rice</button>
+                <button onclick="openTab('noodles')" class="tab-btn bg-white text-charcoal border border-gray-200 px-6 py-2 rounded-full font-bold whitespace-nowrap shadow-sm transition hover:border-vibrant" data-target="noodles">Noodles</button>
+                <button onclick="openTab('salads')" class="tab-btn bg-white text-charcoal border border-gray-200 px-6 py-2 rounded-full font-bold whitespace-nowrap shadow-sm transition hover:border-vibrant" data-target="salads">Salads</button>
+                <button onclick="openTab('drinks')" class="tab-btn bg-white text-charcoal border border-gray-200 px-6 py-2 rounded-full font-bold whitespace-nowrap shadow-sm transition hover:border-vibrant" data-target="drinks">Soft Drinks & Liquor</button>
+            </div>
+
+            <div id="rice" class="tab-content grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in">
+                <article class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row">
+                    <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Signature Smoky Jollof" class="h-48 md:h-auto md:w-48 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-charcoal">Signature Smoky Jollof</h3>
+                                <span class="font-bold text-vibrant text-lg">GH₵ 30.00</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mb-4">Rich, smoky party jollof cooked to perfection with traditional spices.</p>
+                        </div>
+                        <button onclick="addToCart('Signature Smoky Jollof', 30.00)" class="w-full bg-charcoal text-white py-2 rounded-lg font-semibold hover:bg-gray-800 transition">Quick Add <i class="fas fa-plus ml-1"></i></button>
+                    </div>
+                </article>
+                <article class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row">
+                    <img src="https://images.unsplash.com/photo-1539755530862-00f623c00f52?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Fluffy Plain Rice" class="h-48 md:h-auto md:w-48 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-charcoal">Fluffy Plain Rice</h3>
+                                <span class="font-bold text-vibrant text-lg">GH₵ 30.00</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mb-4">Steamed aromatic jasmine rice served with rich, savory tomato stew.</p>
+                        </div>
+                        <button onclick="addToCart('Fluffy Plain Rice', 30.00)" class="w-full bg-charcoal text-white py-2 rounded-lg font-semibold hover:bg-gray-800 transition">Quick Add <i class="fas fa-plus ml-1"></i></button>
+                    </div>
+                </article>
+            </div>
+
+            <div id="noodles" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in">
+                <article class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row">
+                    <img src="https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Spicy Stir-fry Noodles" class="h-48 md:h-auto md:w-48 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-charcoal">Spicy Stir-fry Noodles</h3>
+                                <span class="font-bold text-vibrant text-lg">GH₵ 25.00</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mb-4">Wok-tossed noodles with fresh veggies, soy glaze, and our secret chili oil.</p>
+                        </div>
+                        <button onclick="addToCart('Spicy Stir-fry Noodles', 25.00)" class="w-full bg-charcoal text-white py-2 rounded-lg font-semibold hover:bg-gray-800 transition">Quick Add <i class="fas fa-plus ml-1"></i></button>
+                    </div>
+                </article>
+            </div>
+
+            <div id="salads" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in">
+                <article class="bg-white rounded-2xl shadow-sm border border-leaf overflow-hidden flex flex-col md:flex-row">
+                    <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Garden Fresh Mix" class="h-48 md:h-auto md:w-48 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-charcoal">Garden Fresh Mix</h3>
+                                <span class="font-bold text-leaf text-lg">GH₵ 20.00</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mb-4">Crisp lettuce, cherry tomatoes, cucumbers, and our homemade vinaigrette.</p>
+                        </div>
+                        <button onclick="addToCart('Garden Fresh Mix', 20.00)" class="w-full bg-leaf text-white py-2 rounded-lg font-semibold hover:bg-green-600 transition">Quick Add <i class="fas fa-plus ml-1"></i></button>
+                    </div>
+                </article>
+            </div>
+
+            <div id="drinks" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in">
+                <article class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col md:flex-row">
+                    <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Chilled Beverages" class="h-48 md:h-auto md:w-48 object-cover">
+                    <div class="p-6 flex flex-col justify-between flex-1">
+                        <div>
+                            <div class="flex justify-between items-start mb-2">
+                                <h3 class="text-xl font-bold text-charcoal">Assorted Drinks & Liquor</h3>
+                                <span class="font-bold text-vibrant text-lg">GH₵ 15.00</span>
+                            </div>
+                            <p class="text-gray-500 text-sm mb-4">A refreshing selection of chilled soft drinks and premium liquors to match your meal.</p>
+                        </div>
+                        <button onclick="addToCart('Assorted Drinks & Liquor', 15.00)" class="w-full bg-charcoal text-white py-2 rounded-lg font-semibold hover:bg-gray-800 transition">Quick Add <i class="fas fa-plus ml-1"></i></button>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="favorites" class="bg-gray-100 py-16 px-4">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-2xl md:text-3xl font-bold text-center text-charcoal mb-10">Customer Favorites</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="bg-white p-6 rounded-xl shadow text-center border-t-4 border-vibrant">
+                        <div class="text-vibrant text-xl mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="italic text-gray-600 mb-4">"The Smoky Jollof reminds me of home. Absolute perfection every time I order!"</p>
+                        <span class="font-bold text-charcoal">- Enam</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow text-center">
+                        <div class="text-vibrant text-xl mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="italic text-gray-600 mb-4">"Hands down the best stir-fry noodles in the region. The quick delivery is a bonus."</p>
+                        <span class="font-bold text-charcoal">- Precious</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow text-center">
+                        <div class="text-vibrant text-xl mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="italic text-gray-600 mb-4">"Fresh salads that actually taste amazing. My go-to lunch spot!"</p>
+                        <span class="font-bold text-charcoal">- Hilda</span>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                    <div class="bg-white p-6 rounded-xl shadow text-center">
+                        <div class="text-vibrant text-xl mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        <p class="italic text-gray-600 mb-4">"The plain rice and stew hit the right spot. Very generous portions."</p>
+                        <span class="font-bold text-charcoal">- Agbotamayize</span>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow text-center">
+                        <div class="text-vibrant text-xl mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="italic text-gray-600 mb-4">"Their chilled soft drinks and liquor selection perfectly complements the spicy meals. Highly recommended!"</p>
+                        <span class="font-bold text-charcoal">- Elizabeth</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="find-us" class="py-16 px-4 max-w-6xl mx-auto flex flex-col md:flex-row gap-10">
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-bold text-charcoal mb-6">Find Us</h2>
+                <ul class="space-y-4 text-gray-600">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt text-vibrant mt-1 mr-3 text-xl"></i>
+                        <div>
+                            <strong class="block text-charcoal">Location</strong>
+                            Volta Region, Ho Tsiyikpota
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-clock text-vibrant mt-1 mr-3 text-xl"></i>
+                        <div>
+                            <strong class="block text-charcoal">Business Hours</strong>
+                            Everyday: 3:00 PM - 11:00 PM
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-phone text-vibrant mt-1 mr-3 text-xl"></i>
+                        <div>
+                            <strong class="block text-charcoal">Contact</strong>
+                            +233 53 606 3262
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="md:w-1/2 bg-gray-200 rounded-2xl overflow-hidden h-64 md:h-auto shadow-inner relative">
+                <div class="absolute inset-0 flex items-center justify-center flex-col text-gray-500">
+                    <i class="fas fa-map-marked-alt text-5xl mb-2"></i>
+                    <span>Interactive Map Embed (Ho Tsiyikpota)</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-charcoal text-white pt-12 pb-24 md:pb-8 border-t border-gray-800">
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <h3 class="text-2xl font-bold text-vibrant mb-4">PHIL P</h3>
+                <p class="text-gray-400 text-sm">Bold flavors, freshly served. Your local destination for premium Jollof, Noodles, Salads, Soft Drinks and Liquor in Ho.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#home" class="hover:text-vibrant transition">Home</a></li>
+                    <li><a href="#menu" class="hover:text-vibrant transition">Menu</a></li>
+                    <li><a href="#find-us" class="hover:text-vibrant transition">Contact</a></li>
+                    <li><a href="#" class="hover:text-vibrant transition">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4">Join the Flavor Club</h4>
+                <p class="text-sm text-gray-400 mb-4">Get early updates on our specials!</p>
+                <form class="flex" onsubmit="event.preventDefault(); alert('Subscribed!');">
+                    <input type="email" placeholder="Email address" class="px-4 py-2 w-full rounded-l-lg text-charcoal focus:outline-none" required>
+                    <button type="submit" class="bg-vibrant px-4 py-2 rounded-r-lg hover:bg-orange-600 transition"><i class="fas fa-paper-plane"></i></button>
+                </form>
+                <div class="mt-6 flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-gray-600 text-xs border-t border-gray-800 pt-6">
+            &copy; 2026 Phil P Restaurant. All rights reserved.
+        </div>
+    </footer>
+
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-charcoal p-3 flex justify-between items-center text-white z-40 border-t border-gray-700 shadow-[0_-4px_10px_rgba(0,0,0,0.2)]">
+        <div>
+            <span class="text-sm text-gray-300">Total:</span> 
+            <span id="mobile-cart-total" class="font-bold text-vibrant text-lg">GH₵ 0.00</span>
+        </div>
+        <button onclick="toggleCart()" class="bg-vibrant text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-md active:scale-95 transition">
+            Order Now (<span id="mobile-cart-count">0</span>)
+        </button>
+    </div>
+
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-60 z-50 hidden flex justify-end transition-opacity duration-300">
+        <div class="bg-white w-full md:w-96 h-full shadow-2xl flex flex-col animate-slide-in">
+            <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+                <h2 class="text-xl font-bold text-charcoal">Your Order</h2>
+                <button onclick="toggleCart()" class="text-gray-400 hover:text-vibrant transition text-2xl">&times;</button>
+            </div>
+            
+            <div id="cart-items" class="p-6 flex-1 overflow-y-auto space-y-4">
+                <div class="text-center text-gray-400 mt-10">
+                    <i class="fas fa-shopping-basket text-4xl mb-3"></i>
+                    <p>Your cart is empty.</p>
+                </div>
+            </div>
+
+            <div class="p-6 border-t border-gray-100 bg-gray-50">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-gray-600 font-semibold">Subtotal</span>
+                    <span id="cart-subtotal" class="text-xl font-bold text-charcoal">GH₵ 0.00</span>
+                </div>
+                <button onclick="checkout()" class="w-full bg-vibrant text-white py-3 rounded-lg font-bold text-lg hover:bg-orange-600 transition shadow-md">
+                    Checkout securely
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tabbed Menu Logic
+        function openTab(tabId) {
+            // Hide all tab content
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.add('hidden');
+            });
+            
+            // Reset all tab buttons
+            document.querySelectorAll('.tab-btn').forEach(el => {
+                el.classList.remove('bg-vibrant', 'text-white');
+                el.classList.add('bg-white', 'text-charcoal');
+            });
+            
+            // Show target tab
+            document.getElementById(tabId).classList.remove('hidden');
+            
+            // Highlight active button
+            const activeBtn = document.querySelector(`[data-target="${tabId}"]`);
+            activeBtn.classList.remove('bg-white', 'text-charcoal');
+            activeBtn.classList.add('bg-vibrant', 'text-white');
+        }
+
+        // Cart Logic
+        let cart = [];
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCartUI();
+            
+            // Visual feedback
+            const toast = document.createElement('div');
+            toast.className = 'fixed top-20 right-4 bg-charcoal text-white px-4 py-2 rounded shadow-lg z-50 text-sm font-semibold transition-opacity duration-300';
+            toast.innerText = `${name} added to cart!`;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+            // Update badges and totals
+            document.getElementById('desktop-cart-count').innerText = count;
+            document.getElementById('mobile-cart-count').innerText = count;
+            document.getElementById('mobile-cart-total').innerText = `GH₵ ${total.toFixed(2)}`;
+            document.getElementById('cart-subtotal').innerText = `GH₵ ${total.toFixed(2)}`;
+
+            // Render Items
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center text-gray-400 mt-10">
+                        <i class="fas fa-shopping-basket text-4xl mb-3"></i>
+                        <p>Your cart is empty.</p>
+                    </div>`;
+                return;
+            }
+
+            cartItemsContainer.innerHTML = cart.map(item => `
+                <div class="flex justify-between items-center border-b border-gray-100 pb-3">
+                    <div>
+                        <h4 class="font-bold text-sm text-charcoal">${item.name}</h4>
+                        <div class="text-gray-500 text-xs mt-1">Qty: ${item.quantity} x GH₵ ${item.price.toFixed(2)}</div>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <span class="font-bold text-vibrant">GH₵ ${(item.price * item.quantity).toFixed(2)}</span>
+                        <button onclick="removeFromCart('${item.name}')" class="text-red-400 hover:text-red-600 transition"><i class="fas fa-trash-alt"></i></button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            if (modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        function checkout() {
+            if(cart.length === 0) {
+                alert("Your cart is empty. Add some delicious food first!");
+                return;
+            }
+            alert(`Proceeding to checkout. Total: GH₵ ${document.getElementById('cart-subtotal').innerText.replace('GH₵ ', '')}. Thank you for choosing Phil P!`);
+            cart = [];
+            updateCartUI();
+            toggleCart();
+        }
+    </script>
+    <style>
+        .animate-fade-in { animation: fadeIn 0.4s ease-in-out; }
+        .animate-slide-in { animation: slideIn 0.3s ease-out forwards; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+    </style>
+</body>
+</html>
